@@ -14,7 +14,7 @@ Once you have your Swift package set up, adding CardScanner as a dependency is a
 
 ```
 dependencies: [
-    .package(url: "https://github.com/michzio/CardScanner.git", .upToNextMajor(from: "0.1.0"))
+    .package(url: "https://github.com/mohammedzizou/CreditCardScannerIos.git", .upToNextMajor(from: "0.1.0"))
 ]
 ```
 
