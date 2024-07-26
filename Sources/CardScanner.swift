@@ -34,13 +34,13 @@ public struct CardScanner: UIViewControllerRepresentable {
             self.localizedDoneButton = localizedDoneButton
         }
 
-        public static let `default` = Configuration(
-            watermarkText: "Card_Scanner",
+         public static let `default` = Configuration(
+            watermarkText: "Fintechracy",
             font: .systemFont(ofSize: 24),
             accentColor: .white,
             watermarkWidth: 150,
             watermarkHeight: 50,
-            drawBoxes: false,
+            drawBoxes: true,
             localizedCancelButton: "Cancel",
             localizedDoneButton: "Done"
         )
