@@ -18,7 +18,7 @@ class ScannerOverlayView: UIView {
     }
     
     private func setup() {
-        backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        backgroundColor = UIColor.gray.withAlphaComponent(0)
         layer.mask = maskLayer
     }
     
@@ -103,15 +103,15 @@ extension ScannerOverlayView {
         let size: CGSize
         if currentOrientation.isPortrait || currentOrientation == .unknown {
             size = CGSize(
-                width: min(desiredWidthRatio * bufferAspectRatio, maxPortraitWidth),
-                height: desiredHeightRatio / bufferAspectRatio
+                width: 1,
+                height: 1
             )
         } else {
-            size = CGSize(width: desiredWidthRatio, height: max(desiredHeightRatio, minLandscapeHeightRatio))
+            size = CGSize(width: 1, height: 1)
         }
         
         // Make it centered.
-        regionOfInterest.origin = CGPoint(x: (1 - size.width) / 2, y: (1 - size.height) / 2)
+        regionOfInterest.origin = CGPoint(x:0, y:0)
         regionOfInterest.size = size
         
         print("Region of interest: \(regionOfInterest)")
@@ -162,7 +162,7 @@ extension ScannerOverlayView {
     
     @objc open func addOverlays(_ cutout: CGRect) {
         
-        addRoundedRectangle(around: cutout)
+       // addRoundedRectangle(around: cutout)
         addWatermark()
         
         // override to add additional layers on overlay
