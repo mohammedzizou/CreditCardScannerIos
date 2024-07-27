@@ -33,7 +33,7 @@ public class CardScannerController : VisionController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = configuration.watermarkText
-        label.font = .systemFont(ofSize: 20)
+        label.font = CTFontCreateWithName(configuration.font.fontName as CFString, configuration.font.pointSize, nil)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
