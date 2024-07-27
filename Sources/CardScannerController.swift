@@ -267,7 +267,7 @@ public class CardScannerController : VisionController {
             
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.delegate?.didScanCard(
+                strongSelf.delegate?.didTapDone(
                     number: strongSelf.foundNumber,
                     expDate: strongSelf.foundExpDate,
                     holder: strongSelf.foundCardHolder
