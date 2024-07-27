@@ -53,13 +53,13 @@ public class VisionController: UIViewController {
     
     lazy var torchButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "bolt.slash.fill"), for: .normal)
-        button.setImage(UIImage(systemName: "bolt.fill"), for: .selected)
+        button.setImage(UIImage(systemName: "sun.min.fill"), for: .normal)
+        button.setImage(UIImage(systemName: "sun.max.fill"), for: .selected)
         button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(torchAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 28).isActive = true
         return button
     }()
     
@@ -183,8 +183,8 @@ public class VisionController: UIViewController {
     private func setupTorchButton() {
         view.addSubview(torchButton)
         // constraint button
-        torchButton.leadingAnchor.constraint(equalTo: previewView.leadingAnchor, constant: 12).isActive = true
-        torchButton.topAnchor.constraint(equalTo: previewView.topAnchor, constant: 12).isActive = true
+        torchButton.leadingAnchor.constraint(equalTo: previewView.leadingAnchor, constant: 18).isActive = true
+        torchButton.topAnchor.constraint(equalTo: previewView.topAnchor, constant: 55).isActive = true
     }
     
     /*
