@@ -11,10 +11,9 @@ protocol CardScannerDelegate: AnyObject {
 }
 
 public class CardScannerController : VisionController {
-    
     // MARK: - Delegate
     weak var delegate: CardScannerDelegate?
-    
+
     // MRAK: - Ovelay View
     override var overlayViewClass: ScannerOverlayView.Type {
         return CardOverlayView.self
@@ -30,7 +29,15 @@ public class CardScannerController : VisionController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+    lazy var watermarkLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = configuration.watermarkText
+        label.font = .systemFont(ofSize: 20)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     lazy var brandLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -81,7 +88,7 @@ public class CardScannerController : VisionController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setwatermarkLabel()
         setupLabels()
         setupButton()
     }
@@ -107,7 +114,12 @@ public class CardScannerController : VisionController {
         stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
     }
-    
+    func setwatermarkLabel() {
+         view.addSubview(watermarkLabel)
+        // constraint labels
+        watermarkLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        watermarkLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
+    }
     func setupButton() {
         view.addSubview(button)
         // constraint button
