@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = "Card_Scanner"
-  s.version = "0.3.0"
+  s.version = "1.0.1"
   s.summary = "SwiftUI payment cards scanning tool."
 
   s.swift_version = '5.6'
@@ -12,11 +12,11 @@ Pod::Spec.new do |s|
   SwiftUI payment card scanning tool.
   DESC
 
-  s.homepage = "https://github.com/michzio/CardScanner"
+  s.homepage = "https://github.com/mohammedzizou/CreditCardScannerIos"
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = { "Michał Ziobro" => "swiftui.developer@gmail.com" }
 
-  s.source = { :git => "https://github.com/michzio/CardScanner.git", :tag => "#{s.version}" }
+  s.source = { :git => "https://github.com/mohammedzizou/CreditCardScannerIos.git", :tag => "#{s.version}" }
 
   s.source_files = "Sources/**/*.swift"
   s.exclude_files = [
