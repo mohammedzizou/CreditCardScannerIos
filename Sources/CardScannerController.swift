@@ -112,7 +112,7 @@ public class CardScannerController : VisionController {
         view.addSubview(button)
         // constraint button
         button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        button.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        button.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
     }
     
     override var usesLanguageCorrection: Bool {
