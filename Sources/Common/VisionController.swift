@@ -101,7 +101,7 @@ public class VisionController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        // setupImageView()
+//         setupImageView()
         setupPreviewView()
         setupOverlayView()
         setupTorchButton()
@@ -626,8 +626,57 @@ extension VisionController {
             device.torchMode = on ? .on : .off
             torchButton.isSelected = on
             device.unlockForConfiguration()
+            
+            if on {
+                print("Torch is on")
+                showSnackbar(message: "Beware of the glare of a flashlight.\n Gently move your card around it.")
+            }
         } catch {
             print("Torch could not be used")
         }
     }
+
+    func showSnackbar(message: String) {
+        let snackbar = UIView()
+        snackbar.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        snackbar.layer.cornerRadius = 10
+        snackbar.clipsToBounds = true
+
+        let label = UILabel()
+        label.text = message
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 0  // Allows the label to display multiple lines
+
+        snackbar.addSubview(label)
+        self.view.addSubview(snackbar)
+
+        // Set constraints for the label
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leadingAnchor.constraint(equalTo: snackbar.leadingAnchor, constant: 16).isActive = true
+        label.trailingAnchor.constraint(equalTo: snackbar.trailingAnchor, constant: -16).isActive = true
+        label.topAnchor.constraint(equalTo: snackbar.topAnchor, constant: 8).isActive = true
+        label.bottomAnchor.constraint(equalTo: snackbar.bottomAnchor, constant: -8).isActive = true
+
+        // Set constraints for the snackbar
+        snackbar.translatesAutoresizingMaskIntoConstraints = false
+        snackbar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        snackbar.widthAnchor.constraint(equalToConstant: 300).isActive = true  // Adjust the width as needed
+        snackbar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        snackbar.alpha = 0
+
+        // Animate the snackbar
+        UIView.animate(withDuration: 0.5, animations: {
+            snackbar.alpha = 1
+            snackbar.transform = CGAffineTransform(translationX: 0, y: -10)
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 2.0, options: [], animations: {
+                snackbar.alpha = 0
+                snackbar.transform = CGAffineTransform.identity
+            }) { _ in
+                snackbar.removeFromSuperview()
+            }
+        }
+    }
+
 }
